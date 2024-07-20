@@ -41,7 +41,8 @@ class Server:
         assert page > 0 and page_size > 0
         start_page, end_page = index_range(page, page_size)
         data_page = self.dataset()
-        return [] if start_page > len(data_page) else data_page[start_page:end_page]
+        return [] if start_page > len(data_page)\
+            else data_page[start_page:end_page]
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
         """
