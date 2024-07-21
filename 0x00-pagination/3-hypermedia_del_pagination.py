@@ -46,11 +46,12 @@ class Server:
         and page_size with default value of 10
         """
         indexed_dataset = self.indexed_dataset()
-        next_index = index
-        data = []
 
         assert isinstance(index, int) and type(index) == int
         assert isinstance(page_size, int) and type(page_size) == int
+
+        next_index = index
+        data = []
 
         dataset_len = len(indexed_dataset)
 
