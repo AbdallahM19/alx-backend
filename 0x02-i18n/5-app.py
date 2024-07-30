@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, g
 from flask_babel import Babel
 
 
-class Config:
+class Config(object):
     """Config Class"""
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
@@ -41,9 +41,9 @@ def get_locale():
 
 def get_user():
     """Get user function"""
-    user_id = request.args.get('user_id')
-    if user_id:
-        return users.get(int(user_id))
+    login_as = request.args.get('login_as')
+    if login_as:
+        return users.get(int(login_as))
     return None
 
 
