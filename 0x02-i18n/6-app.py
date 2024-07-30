@@ -33,21 +33,17 @@ def home():
 @babel.localeselector
 def get_locale():
     """Get locale function"""
-    # Check URL parameters for locale
     locale = request.args.get('locale', '')
     if locale in app.config['LANGUAGES']:
         return locale
 
-    # Check user settings for locale
     if g.user and g.user['lacale'] in app.config['LANGUAGES']:
         return g.user['locale']
 
-    # Check request headers for locale
     header_locale = request.headers.get('locale', '')
     if header_locale in app.config['LANGUAGES']:
         return header_locale
 
-    # Default locale
     return request.accept_languages.best_match(app.config["LANGUAGES"])
 
 
