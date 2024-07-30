@@ -2,9 +2,10 @@
 """Flask app"""
 
 from flask import Flask, render_template, request, g
-from flask_babel import Babel
+from flask_babel import Babel, _, format_datetime
 import pytz
 from pytz.exceptions import UnknownTimeZoneError
+from datetime import datetime
 
 
 class Config(object):
@@ -29,7 +30,12 @@ users = {
 @app.route('/')
 def home():
     """home function"""
-    return render_template('7-index.html')
+    current_time = format_datetime(
+        datetime.now(pytz.timezone(get_timezone()))
+    )
+    return render_template(
+        'index.html', current_time=current_time
+    )
 
 
 @babel.localeselector
