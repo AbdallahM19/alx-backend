@@ -4,6 +4,7 @@
 from flask import Flask, render_template, request
 from flask_babel import Babel
 
+
 class Config:
     """Config Class"""
     LANGUAGES = ["en", "fr"]
